@@ -24,7 +24,6 @@ const defaults = {
     fs: 1,
     h1: null,
     iv_load_policy: 1,
-    list: null,
     listType: null,
     loop: 0,
     modestbranding: null,
