@@ -69,7 +69,9 @@ const defaults = {
   aria: {
     openMessage: 'You just openned the modal video',
     dismissBtnMessage: 'Close the modal by clicking here'
-  }
+  },
+  onOpen: null,
+  onClose: null
 };
 
 export default class ModalVideo {
@@ -84,6 +86,9 @@ export default class ModalVideo {
       selector.addEventListener('click', (event) => {
         if (selector.tagName === 'A') {
           event.preventDefault();
+        }
+        if (opt.onOpen) {
+          opt.onOpen();
         }
         const videoId = selector.dataset.videoId;
         const channel = selector.dataset.channel || opt.channel;
@@ -100,6 +105,9 @@ export default class ModalVideo {
             remove(modal);
             selector.focus();
           }, speed);
+          if (opt.onClose) {
+            opt.onClose();
+          }
         });
         modal.addEventListener('keydown', (e) => {
           if (e.which === 9) {

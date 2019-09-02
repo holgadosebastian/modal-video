@@ -22,6 +22,12 @@
 			youtube:{
 				controls:0,
 				nocookie: true
+			},
+			onOpen: function() {
+				console.log('callback open')
+			},
+			onClose: function() {
+				console.log('callback close')
 			}
 		});
 	</script>
